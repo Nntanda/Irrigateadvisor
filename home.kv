@@ -1,0 +1,86 @@
+<HomeScreen>:
+    canvas.before:
+        Color:
+            rgba: (0.97, 0.98, 1, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: [0, 0, 0, 0]
+
+        NavBar:
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [40, 40, 40, 40]
+            spacing: 20
+            ModernCard:
+                orientation: 'vertical'
+                spacing: 18
+                ModernLabel:
+            id: welcome_label
+                    text: "Welcome!"
+            font_size: 28
+            bold: True
+            color: (0.1, 0.2, 0.3, 1)
+            size_hint_y: None
+            height: 50
+                ModernButton:
+                    text: "Set Location"
+                    on_press: app.root.current = 'location'
+                ModernButton:
+                    text: "Select Crop & Stage"
+                    on_press: app.root.current = 'vegetable_selection'
+                ModernButton:
+                    text: "View Weather Chart"
+                    on_press: app.root.current = 'weather_chart'
+                ModernButton:
+                    text: "View Soil Moisture & ET"
+                    on_press: app.root.current = 'soil_moisture'
+                ModernButton:
+                    text: "View Recommendations"
+                    on_press: app.root.current = 'recommendations'
+                ModernButton:
+                    text: "Open Map"
+                    on_press: app.root.current = 'map'
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: 0.6
+            padding: 20
+            spacing: 15
+            canvas.before:
+                Color:
+                    rgba: (1, 1, 1, 1)
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [15]
+
+            Label:
+                text: "This is your dashboard. You'll soon see crop schedules, irrigation tips, and weather data here."
+                font_size: 16
+                color: (0.2, 0.3, 0.4, 1)
+                halign: 'center'
+                valign: 'middle'
+                text_size: self.width, None
+                size_hint_y: None
+                height: 100
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: 0.3
+            spacing: 15
+
+            Button:
+                text: 'Logout'
+                background_color: (0.8, 0.2, 0.2, 1)
+                color: (1, 1, 1, 1)
+                font_size: 16
+                size_hint_y: None
+                height: 40
+                on_press:
+                    app.root.current = 'welcome'

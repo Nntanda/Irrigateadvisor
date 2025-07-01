@@ -1,0 +1,51 @@
+<LoginScreen>:
+    canvas.before:
+        Color:
+            rgba: (0.97, 0.98, 1, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: [0, 0, 0, 0]
+
+        NavBar:
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [40, 40, 40, 40]
+            spacing: 20
+            ModernCard:
+                orientation: 'vertical'
+                spacing: 18
+                ModernLabel:
+                    text: "Login to CropIrrigator"
+            font_size: 28
+            bold: True
+            color: (0.1, 0.2, 0.3, 1)
+            size_hint_y: None
+            height: 50
+                ModernLabel:
+                    text: "Email"
+                size_hint_y: None
+                    height: 24
+                ModernTextInput:
+                id: login_email
+                    hint_text: "Enter your email"
+                ModernLabel:
+                    text: "Password"
+                size_hint_y: None
+                    height: 24
+                ModernTextInput:
+                id: login_password
+                    hint_text: "Enter your password"
+                password: True
+                ModernButton:
+                    text: "Login"
+                on_press: root.login()
+                ModernButton:
+                    text: "Don't have an account? Sign Up"
+                    background_color: (0.8, 0.4, 0.2, 1)
+                    on_press: app.root.current = 'signup'

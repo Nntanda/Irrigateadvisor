@@ -1,0 +1,62 @@
+<SoilMoistureScreen>:
+    canvas.before:
+        Color:
+            rgba: (0.96, 0.98, 1, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: [0, 0, 0, 0]
+
+        NavBar:
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [40, 20, 40, 40]
+            spacing: 20c
+            ModernCard:
+                orientation: 'vertical'
+                size_hint_y: 0.8
+                ModernLabel:
+                    text: "Soil Moisture Forecast & Evapotranspiration"
+                    font_size: 26
+                    bold: True
+                    color: (0.1, 0.2, 0.3, 1)
+                    size_hint_y: None
+                    height: 50
+                ModernButton:
+                    text: "Predicted Data"
+                    on_press: root.load_soil_and_et()
+                Image:
+                    id: soil_chart_image
+                    source: "soil_chart.png"
+                    allow_stretch: True
+                    keep_ratio: True
+                    size_hint_y: 0.7
+                ModernLabel:
+                    id: recommendation_label
+                    text: "Recommendations will appear here."
+                    font_size: 16
+                    color: (0.2, 0.3, 0.4, 1)
+                    halign: 'center'
+                    size_hint_y: None
+                    height: 30
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: 0.2
+                spacing: 10
+                ModernButton:
+                    text: "Back to Home"
+                    background_color: (0.2, 0.6, 0.2, 1)
+                    color: (1, 1, 1, 1)
+                    font_size: 16
+                    on_press: app.root.current = 'home'
+                ModernButton:
+                    text: "Go to Recommendations"
+                    background_color: (0.8, 0.4, 0.2, 1)
+                    color: (1, 1, 1, 1)
+                    font_size: 16
+                    on_press: app.root.current = 'recommendations' 

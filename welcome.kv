@@ -1,0 +1,43 @@
+<WelcomeScreen>:
+    canvas.before:
+        Color:
+            rgba: (0.97, 0.98, 1, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: [0, 0, 0, 0]
+
+        NavBar:
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [40, 80, 40, 40]
+            spacing: 20
+            ModernCard:
+                orientation: 'vertical'
+                spacing: 18
+                ModernLabel:
+                    text: "Welcome to CropIrrigator!"
+                    font_size: 32
+                bold: True
+                    color: (0.1, 0.2, 0.3, 1)
+                    size_hint_y: None
+                    height: 60
+                ModernLabel:
+                    text: "Your smart assistant for weather, soil, and irrigation recommendations."
+                font_size: 18
+                    color: (0.2, 0.3, 0.4, 1)
+                    halign: 'center'
+                    size_hint_y: None
+                    height: 40
+                ModernButton:
+                    text: "Login"
+                    on_press: app.root.current = 'login'
+                ModernButton:
+                    text: "Sign Up"
+                    background_color: (0.8, 0.4, 0.2, 1)
+                    on_press: app.root.current = 'signup'

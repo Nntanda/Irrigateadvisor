@@ -1,0 +1,84 @@
+#:import rgba kivy.utils.get_color_from_hex
+
+<ModernButton@Button>:
+    background_color: rgba('#2196F3')
+    color: (1, 1, 1, 1)
+    font_size: 16
+    size_hint_y: None
+    height: 45
+    background_normal: ''
+    background_down: ''
+    canvas.before:
+        Color:
+            rgba: self.background_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [12]
+
+<ModernLabel@Label>:
+    color: rgba('#263238')
+    font_size: 16
+    font_name: 'Roboto'
+
+<ModernCard@BoxLayout>:
+    padding: 20
+    spacing: 15
+    canvas.before:
+        Color:
+            rgba: rgba('#FFFFFF')
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [18]
+        Color:
+            rgba: (0, 0, 0, 0.07)
+        RoundedRectangle:
+            pos: self.x+2, self.y-2
+            size: self.width-4, self.height+4
+            radius: [18]
+
+<ModernTextInput@TextInput>:
+    background_color: rgba('#ECEFF1')
+    foreground_color: rgba('#263238')
+    padding: [12, 10, 12, 10]
+    font_size: 16
+    size_hint_y: None
+    height: 40
+    multiline: False
+    cursor_color: rgba('#2196F3')
+    canvas.before:
+        Color:
+            rgba: self.background_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [10]
+
+<NavBar@BoxLayout>:
+    size_hint_y: None
+    height: 56
+    padding: [20, 0, 20, 0]
+    spacing: 10
+    canvas.before:
+        Color:
+            rgba: rgba('#1976D2')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Label:
+        text: 'CropIrrigator'
+        color: (1, 1, 1, 1)
+        font_size: 22
+        bold: True
+        size_hint_x: 0.9
+    Button:
+        text: 'Home'
+        background_color: (0,0,0,0)
+        color: (1,1,1,1)
+        font_size: 16
+        size_hint_x: 0.1
+        on_press: app.root.current = 'home'
+
+# Color palette (for reference):
+# Primary: #1976D2, Accent: #2196F3, Background: #F5F7FA, Card: #FFFFFF, Text: #263238 

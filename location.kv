@@ -1,0 +1,59 @@
+<LocationScreen>:
+    canvas.before:
+        Color:
+            rgba: (0.97, 0.98, 1, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: [0, 0, 0, 0]
+
+        NavBar:
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [40, 40, 40, 40]
+            spacing: 20
+            ModernCard:
+                orientation: 'vertical'
+                spacing: 18
+                ModernLabel:
+            text: "Set Your Location"
+            font_size: 28
+            bold: True
+            color: (0.1, 0.2, 0.3, 1)
+            size_hint_y: None
+            height: 50
+                ModernLabel:
+                    id: status_label
+                    text: ""
+                    font_size: 16
+                color: (0.2, 0.3, 0.4, 1)
+                size_hint_y: None
+                height: 30
+                ModernTextInput:
+                id: location_input
+                    hint_text: "Enter a place name or address"
+                ModernButton:
+                    text: "Search Location"
+                    on_press: root.search_location()
+                ModernButton:
+                    text: "Use GPS"
+                    background_color: (0.8, 0.4, 0.2, 1)
+                    on_press: root.use_gps()
+                ModernCard:
+            orientation: 'vertical'
+                    size_hint_y: 0.5
+                    padding: [0, 10, 0, 0]
+                    Image:
+                        id: map_image
+                        source: ""
+                        allow_stretch: True
+                        keep_ratio: True
+                ModernButton:
+                    text: "Back to Home"
+                background_color: (0.2, 0.6, 0.2, 1)
+                    on_press: app.root.current = 'home'

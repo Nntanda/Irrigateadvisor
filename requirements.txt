@@ -1,0 +1,8 @@
+kivy==2.2.1
+kivymd==1.1.1
+requests>=2.28.2
+certifi>=2023.7.22
+geopy>=2.3.0
+kivy-garden>=0.1.5
+matplotlib>=3.5.0
+plyer>=2.1.0

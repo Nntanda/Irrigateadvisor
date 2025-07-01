@@ -1,0 +1,57 @@
+<VegetableSelectionScreen>:
+    canvas.before:
+        Color:
+            rgba: (0.97, 0.98, 1, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: [0, 0, 0, 0]
+
+        NavBar:
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [40, 40, 40, 40]
+            spacing: 20
+            ModernCard:
+                orientation: 'vertical'
+                spacing: 18
+                ModernLabel:
+                    text: "Select Crop & Growth Stage"
+            font_size: 28
+            bold: True
+            color: (0.1, 0.2, 0.3, 1)
+            size_hint_y: None
+            height: 50
+                ModernLabel:
+                    text: "Crop"
+                size_hint_y: None
+                    height: 24
+            Spinner:
+                id: vegetable_spinner
+                text: root.vegetable
+                    values: ['Tomato', 'Cabbage', 'Carrot', 'Sukuma']
+                size_hint_y: None
+                    height: 40
+                ModernLabel:
+                    text: "Growth Stage"
+                size_hint_y: None
+                    height: 24
+            Spinner:
+                id: growth_stage_spinner
+                text: root.growth_stage
+                    values: ['Initial(0-30 days)', 'Development(30-60days)', 'Mid-season(60-90days)', 'Late(90-120days)']
+                size_hint_y: None
+                    height: 40
+                ModernButton:
+                    text: "Save Selection"
+                    on_press: root.save_selection()
+                ModernButton:
+                    text: "Back to Home"
+                background_color: (0.2, 0.6, 0.2, 1)
+                    on_press: app.root.current = 'home'
+    
