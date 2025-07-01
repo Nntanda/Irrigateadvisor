@@ -1,0 +1,23 @@
+# Ignore Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore virtual environment
+venv/
+ENV/
+
+# Ignore Buildozer artifacts
+.buildozer/
+bin/
+*.apk
+
+# Ignore system files
+.DS_Store
+
+# Optional: Ignore big assets if not needed
+*.mp4
+*.mov
+*.zip
+*.tar.gz
+*.sqlite
