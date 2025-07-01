@@ -1,3 +1,18 @@
+# Ignore build output and virtual environments
+__pycache__/
+*.pyc
+*.pyo
+bin/
+.buildozer/
+venv/
+ENV/
+
+# Ignore OS files
+.DS_Store
+
+# Optional: Ignore backup and logs
+*.log
+*.bak
 # Ignore Python artifacts
 __pycache__/
 *.pyc
