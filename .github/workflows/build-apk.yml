@@ -17,6 +17,9 @@ jobs:
       with:
         python-version: '3.10'
 
+    - name: Test internet connection
+      run: ping -c 3 google.com
+
     - name: Install dependencies
       run: |
         sudo apt update
@@ -29,7 +32,7 @@ jobs:
     - name: Install Buildozer
       run: |
         pip install --upgrade pip
-        pip install buildozer cython
+        pip install --no-cache-dir buildozer cython
         buildozer init || true
 
     - name: Install Android SDK components
