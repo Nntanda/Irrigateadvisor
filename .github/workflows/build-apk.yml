@@ -26,6 +26,13 @@ jobs:
           libavcodec-dev libavformat-dev libswscale-dev libbz2-dev liblzma-dev zlib1g-dev \
           libtiff-dev libx11-dev libpng-dev libsm6 libxext6 libxrender-dev
 
+    - name: Install Apache Ant
+      run: |
+        wget https://archive.apache.org/dist/ant/binaries/apache-ant-1.9.4-bin.tar.gz
+        tar -xzf apache-ant-1.9.4-bin.tar.gz
+        echo "ANT_HOME=$PWD/apache-ant-1.9.4" >> $GITHUB_ENV
+        echo "$PWD/apache-ant-1.9.4/bin" >> $GITHUB_PATH
+
     - name: Install Buildozer
       run: |
         pip install --upgrade pip
