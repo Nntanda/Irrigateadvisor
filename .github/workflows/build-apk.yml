@@ -17,8 +17,7 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Test internet connection
-      run: ping -c 3 google.com
+
 
     - name: Install dependencies
       run: |
