@@ -24,19 +24,20 @@ jobs:
           libncurses6 libffi-dev libssl-dev libsqlite3-dev libjpeg-dev libfreetype6-dev \
           libsdl2-dev libgles2-mesa-dev libgstreamer1.0-dev libmtdev-dev libgl1-mesa-dev \
           libavcodec-dev libavformat-dev libswscale-dev libbz2-dev liblzma-dev zlib1g-dev \
-          libtiff-dev libx11-dev libpng-dev libsm6 libxext6 libxrender-dev
+          libtiff-dev libx11-dev libpng-dev libsm6 libxext6 libxrender-dev \
+          curl wget ca-certificates
 
-    - name: Install Apache Ant
+    - name: Install Apache Ant from alternate mirror
       run: |
-        wget https://archive.apache.org/dist/ant/binaries/apache-ant-1.9.4-bin.tar.gz
-        tar -xzf apache-ant-1.9.4-bin.tar.gz
-        echo "ANT_HOME=$PWD/apache-ant-1.9.4" >> $GITHUB_ENV
-        echo "$PWD/apache-ant-1.9.4/bin" >> $GITHUB_PATH
+        wget https://downloads.apache.org/ant/binaries/apache-ant-1.10.14-bin.tar.gz
+        tar -xzf apache-ant-1.10.14-bin.tar.gz
+        echo "ANT_HOME=$PWD/apache-ant-1.10.14" >> $GITHUB_ENV
+        echo "$PWD/apache-ant-1.10.14/bin" >> $GITHUB_PATH
 
-    - name: Install Buildozer
+    - name: Install Buildozer and dependencies
       run: |
-        pip install --upgrade pip
-        pip install --no-cache-dir buildozer cython
+        pip install --upgrade pip setuptools wheel
+        pip install --no-cache-dir buildozer cython virtualenv
         buildozer init || true
 
     - name: Set up Android SDK manually
@@ -44,9 +45,9 @@ jobs:
         mkdir -p ~/.buildozer/android/platform
         cd ~/.buildozer/android/platform
         wget https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip -O cmdline-tools.zip
-        unzip cmdline-tools.zip
-        mkdir -p android-sdk/cmdline-tools
-        mv cmdline-tools android-sdk/cmdline-tools/latest
+        unzip cmdline-tools.zip -d cmdline-tools-temp
+        mkdir -p android-sdk/cmdline-tools/latest
+        mv cmdline-tools-temp/cmdline-tools/* android-sdk/cmdline-tools/latest/
         yes | android-sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=android-sdk --licenses
         android-sdk/cmdline-tools/latest/bin/sdkmanager --sdk_root=android-sdk \
           "platform-tools" \
